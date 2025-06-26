@@ -28,7 +28,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Active navigation link highlighting
+    // Smooth scrolling for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Advanced scroll animations
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.quality-card, .timeline-item, .center-card, .skill-item, .language-card, .contact-card');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('animate-on-scroll', 'animated');
+            }
+        });
+    }
+
+    // Active navigation link highlighting with scroll
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section');
         const scrollPos = window.scrollY + 100;
@@ -48,43 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    window.addEventListener('scroll', updateActiveNavLink);
-
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Scroll animations
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.quality-card, .timeline-item, .center-card, .skill-item, .language-card, .contact-card');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('animate-on-scroll', 'animated');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Run once on load
-
-    // Typing animation for hero title
+    // Enhanced typing animation for hero title
     function typeWriter() {
         const titleHighlight = document.querySelector('.title-highlight');
         const titleMain = document.querySelector('.title-main');
@@ -103,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (i < text1.length) {
                     titleHighlight.textContent += text1.charAt(i);
                     i++;
-                    setTimeout(typeText1, 100);
+                    setTimeout(typeText1, 80);
                 } else {
-                    setTimeout(typeText2, 500);
+                    setTimeout(typeText2, 300);
                 }
             }
             
@@ -113,16 +108,83 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (j < text2.length) {
                     titleMain.textContent += text2.charAt(j);
                     j++;
-                    setTimeout(typeText2, 100);
+                    setTimeout(typeText2, 80);
                 }
             }
             
-            setTimeout(typeText1, 1000);
+            setTimeout(typeText1, 800);
         }
     }
 
-    // Initialize typing animation
-    typeWriter();
+    // Add morphing text effects
+    function addMorphingEffects() {
+        const titleElements = document.querySelectorAll('.section-title');
+        
+        titleElements.forEach(title => {
+            title.style.background = 'linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981)';
+            title.style.backgroundSize = '400% 400%';
+            title.style.webkitBackgroundClip = 'text';
+            title.style.webkitTextFillColor = 'transparent';
+            title.style.animation = 'gradientShift 4s ease-in-out infinite';
+        });
+    }
+
+    // Initialize parallax scrolling
+    function initParallaxScrolling() {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-shapes, .shape');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.3 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        });
+    }
+
+    // Create particle system
+    function createParticleSystem() {
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'particle-system';
+        particleContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        `;
+        
+        document.body.appendChild(particleContainer);
+        
+        for (let i = 0; i < 50; i++) {
+            createParticle(particleContainer);
+        }
+    }
+
+    function createParticle(container) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 4 + 2;
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 20;
+        
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            animation: floatParticle ${duration}s linear ${delay}s infinite;
+        `;
+        
+        container.appendChild(particle);
+    }
 
     // Language level animations
     function animateLanguageLevels() {
@@ -147,8 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(bar);
         });
     }
-
-    animateLanguageLevels();
 
     // Counter animation for stats
     function animateCounters() {
@@ -189,27 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10);
     }
 
-    animateCounters();
-
-    // Parallax effect for hero shapes
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const shapes = document.querySelectorAll('.shape');
-        
-        shapes.forEach((shape, index) => {
-            const speed = 0.5 + (index * 0.2);
-            const yPos = -(scrolled * speed);
-            shape.style.transform = `translateY(${yPos}px)`;
-        });
-    });
-
-    // Form validation (if contact form is added later)
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-
-    // Add ripple effect to buttons
+    // Add ripple effect to interactive elements
     function addRippleEffect() {
         const buttons = document.querySelectorAll('.btn, .quality-card, .center-card, .contact-card');
         
@@ -235,9 +275,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Initialize all animations and effects
+    typeWriter();
+    addMorphingEffects();
+    initParallaxScrolling();
+    createParticleSystem();
+    animateLanguageLevels();
+    animateCounters();
     addRippleEffect();
+    animateOnScroll();
 
-    // Add CSS for ripple effect
+    // Optimized scroll event listener
+    window.addEventListener('scroll', debounce(() => {
+        updateActiveNavLink();
+        animateOnScroll();
+    }, 10));
+
+    // Add CSS for ripple effect and advanced animations
     const style = document.createElement('style');
     style.textContent = `
         .ripple {
@@ -260,8 +314,52 @@ document.addEventListener('DOMContentLoaded', function() {
             position: relative;
             overflow: hidden;
         }
+
+        /* Advanced scroll reveal animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animations */
+        .quality-card:nth-child(1).animated { transition-delay: 0.1s; }
+        .quality-card:nth-child(2).animated { transition-delay: 0.2s; }
+        .quality-card:nth-child(3).animated { transition-delay: 0.3s; }
+        .quality-card:nth-child(4).animated { transition-delay: 0.4s; }
+        .quality-card:nth-child(5).animated { transition-delay: 0.5s; }
+        .quality-card:nth-child(6).animated { transition-delay: 0.6s; }
+        .quality-card:nth-child(7).animated { transition-delay: 0.7s; }
+        .quality-card:nth-child(8).animated { transition-delay: 0.8s; }
+
+        /* Magnetic hover effects */
+        .magnetic {
+            transition: transform 0.2s ease-out;
+        }
     `;
     document.head.appendChild(style);
+
+    // Add magnetic hover effect to cards
+    document.querySelectorAll('.quality-card, .contact-card').forEach(card => {
+        card.classList.add('magnetic');
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            card.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translate(0px, 0px) scale(1)';
+        });
+    });
 });
 
 // Utility functions
@@ -277,8 +375,6 @@ function scrollToSection(sectionId) {
 }
 
 function downloadCV() {
-    // Create a simple CV download functionality
-    // In a real application, this would download an actual PDF file
     const cvContent = generateCVContent();
     const blob = new Blob([cvContent], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
@@ -290,7 +386,6 @@ function downloadCV() {
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
     
-    // Show download notification
     showNotification('CV téléchargé avec succès!');
 }
 
@@ -352,53 +447,28 @@ function showNotification(message) {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: #10b981;
+        background: linear-gradient(135deg, #10b981, #059669);
         color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         z-index: 1001;
-        font-weight: 500;
-        animation: slideIn 0.3s ease;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: slideInNotification 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     `;
     notification.textContent = message;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
+        notification.style.animation = 'slideOutNotification 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         setTimeout(() => {
             document.body.removeChild(notification);
-        }, 300);
+        }, 500);
     }, 3000);
 }
-
-// Add notification animations
-const notificationStyle = document.createElement('style');
-notificationStyle.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(notificationStyle);
 
 // Contact functions
 function callPhone() {
@@ -422,19 +492,38 @@ function debounce(func, wait) {
     };
 }
 
-// Optimize scroll events
-const optimizedScrollHandler = debounce(() => {
-    updateActiveNavLink();
-    animateOnScroll();
-}, 10);
+// Add notification animations
+const notificationStyle = document.createElement('style');
+notificationStyle.textContent = `
+    @keyframes slideInNotification {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutNotification {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(notificationStyle);
 
-window.addEventListener('scroll', optimizedScrollHandler);
-
-// Loading animation
+// Loading animation with modern effects
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
     
-    // Add loading styles
+    // Add enhanced loading styles
     const loadingStyle = document.createElement('style');
     loadingStyle.textContent = `
         body:not(.loaded) {
@@ -448,7 +537,7 @@ window.addEventListener('load', function() {
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -461,18 +550,28 @@ window.addEventListener('load', function() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid white;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-top: 4px solid #3b82f6;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: modernSpin 1s linear infinite;
             z-index: 10000;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
         }
         
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        @keyframes modernSpin {
+            0% { 
+                transform: translate(-50%, -50%) rotate(0deg);
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
+            }
+            100% { 
+                transform: translate(-50%, -50%) rotate(360deg);
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            }
         }
         
         body.loaded::before,
