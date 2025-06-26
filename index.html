@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moncif CHERRADI - Infirmier Auxiliaire</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-user-md"></i>
+                <span>Moncif CHERRADI</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#accueil" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profil" class="nav-link">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#formation" class="nav-link">Formation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Expérience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#competences" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-highlight">Soins Exceptionnels,</span>
+                        <span class="title-main">Meilleurs Résultats</span>
+                    </h1>
+                    <p class="hero-description">
+                        Infirmier auxiliaire diplômé avec une formation complète et une expérience pratique 
+                        dans plusieurs services hospitaliers. Passionné par les soins de qualité et 
+                        l'accompagnement des patients.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                            <i class="fas fa-phone"></i>
+                            Me Contacter
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadCV()">
+                            <i class="fas fa-download"></i>
+                            Télécharger CV
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>24/7</h3>
+                                <p>Disponibilité d'urgence</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Diplômé</h3>
+                                <p>Formation IFSI 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <div class="profile-image">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Moncif CHERRADI</h3>
+                            <p>Infirmier Auxiliaire</p>
+                            <p>Khouribga, Maroc</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="profile-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Profil Professionnel</h2>
+                <p class="section-subtitle">Excellence en soins infirmiers</p>
+            </div>
+            <div class="profile-content">
+                <div class="profile-text">
+                    <p class="profile-description">
+                        Les infirmiers auxiliaires administrent des soins infirmiers aux patients, 
+                        habituellement sous la supervision des médecins, des infirmiers autorisés 
+                        ou d'autres membres de l'équipe de santé. Les techniciens de salle d'opération 
+                        préparent les patients et assistent les médecins praticiens avant et pendant 
+                        les chirurgies.
+                    </p>
+                </div>
+                <div class="qualities-grid">
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>La rigueur</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4>L'autonomie</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Le dynamisme</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>L'esprit d'équipe</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4>La motivation</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>La créativité</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Le bon relationnel</h4>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>La passion</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section id="formation" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Formation et Diplôme</h2>
+                <p class="section-subtitle">Parcours académique</p>
+            </div>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Diplôme d'Infirmier Auxiliaire</h3>
+                        <h4>École IFSI à Khouribga</h4>
+                        <p>Formation complète en soins infirmiers avec stages pratiques dans différents services hospitaliers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Niveau</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Baccalauréat</h3>
+                        <h4>Sciences de la vie et de la terre</h4>
+                        <p>Formation scientifique solide comme base pour les études en santé.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                <p class="section-subtitle">Stages et pratique clinique</p>
+            </div>
+            <div class="experience-content">
+                <div class="hospital-experience">
+                    <div class="hospital-card">
+                        <div class="hospital-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3>Hôpital Hassan II - Khouribga</h3>
+                        <p class="hospital-subtitle">Stages dans les services suivants :</p>
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Médecine</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="fas fa-cut"></i>
+                                <span>Chirurgie</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="fas fa-baby"></i>
+                                <span>Pédiatrie</span>
+                            </div>
+                            <div class="service-item">
+                                <i class="fas fa-ambulance"></i>
+                                <span>Urgences</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="health-centers">
+                    <h3>Centres de Santé</h3>
+                    <div class="centers-grid">
+                        <div class="center-card">
+                            <div class="center-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h4>Centre ZITOUNA</h4>
+                            <p>Soins de proximité et suivi des patients</p>
+                        </div>
+                        <div class="center-card">
+                            <div class="center-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h4>Centre EL QODS</h4>
+                            <p>Soins de proximité et suivi des patients</p>
+                        </div>
+                        <div class="center-card">
+                            <div class="center-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h4>Centre EL BRIK</h4>
+                            <p>Soins de proximité et suivi des patients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competences Section -->
+    <section id="competences" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Compétences</h2>
+                <p class="section-subtitle">Expertise technique et linguistique</p>
+            </div>
+            <div class="skills-content">
+                <div class="technical-skills">
+                    <h3>Compétences Techniques</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Savoir analyser et retranscrire l'information</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Être méthodique</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>Savoir s'adapter à chaque patient</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-eye"></i>
+                            <span>Être vigilant</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Faire preuve de pédagogie</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Avoir un excellent sens du relationnel</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Savoir se remettre en question</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-search"></i>
+                            <span>Mener une veille informationnelle et scientifique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-skills">
+                    <h3>Langues</h3>
+                    <div class="languages-grid">
+                        <div class="language-card">
+                            <div class="language-flag">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Arabe</h4>
+                            <p>Langue Maternelle</p>
+                            <div class="language-level">
+                                <div class="level-bar level-native"></div>
+                            </div>
+                        </div>
+                        <div class="language-card">
+                            <div class="language-flag">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Français</h4>
+                            <p>Courant</p>
+                            <div class="language-level">
+                                <div class="level-bar level-fluent"></div>
+                            </div>
+                        </div>
+                        <div class="language-card">
+                            <div class="language-flag">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Anglais</h4>
+                            <p>Niveau scolaire</p>
+                            <div class="language-level">
+                                <div class="level-bar level-basic"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Restons en contact</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>06.44.45.21.57</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>moncifcherradi240@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>162 Partie 1 Lotissement Zaitouna<br>Khouribga, Maroc</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Moncif CHERRADI</h3>
+                    <p>Infirmier Auxiliaire Diplômé</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#accueil">Accueil</a>
+                    <a href="#profil">Profil</a>
+                    <a href="#formation">Formation</a>
+                    <a href="#experience">Expérience</a>
+                    <a href="#competences">Compétences</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Moncif CHERRADI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
