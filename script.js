@@ -45,18 +45,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Advanced scroll animations
+    // Spectacular scroll animations
     function animateOnScroll() {
-        const elements = document.querySelectorAll('.quality-card, .timeline-item, .center-card, .skill-item, .language-card, .contact-card');
+        const fadeElements = document.querySelectorAll('.quality-card, .contact-card');
+        const slideLeftElements = document.querySelectorAll('.timeline-item:nth-child(odd)');
+        const slideRightElements = document.querySelectorAll('.timeline-item:nth-child(even), .skill-item');
+        const zoomElements = document.querySelectorAll('.center-card, .language-card');
         
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('animate-on-scroll', 'animated');
-            }
-        });
+        function checkVisibility(elements, animationClass) {
+            elements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 150); // Staggered animation
+                }
+            });
+        }
+        
+        // Add animation classes initially
+        fadeElements.forEach(el => el.classList.add('fade-in-up'));
+        slideLeftElements.forEach(el => el.classList.add('slide-in-left'));
+        slideRightElements.forEach(el => el.classList.add('slide-in-right'));
+        zoomElements.forEach(el => el.classList.add('zoom-in'));
+        
+        // Check visibility
+        checkVisibility(fadeElements, 'fade-in-up');
+        checkVisibility(slideLeftElements, 'slide-in-left');
+        checkVisibility(slideRightElements, 'slide-in-right');
+        checkVisibility(zoomElements, 'zoom-in');
     }
 
     // Active navigation link highlighting with scroll
